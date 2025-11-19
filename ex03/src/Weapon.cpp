@@ -5,7 +5,10 @@ Weapon::Weapon(std::string type_input)
     type = type_input;
 }
 
-Weapon::Weapon(void){}
+Weapon::Weapon(void)
+{
+    type = "a small stick";
+}
 
 Weapon::~Weapon(void){}
 

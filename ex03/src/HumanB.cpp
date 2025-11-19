@@ -3,6 +3,7 @@
 HumanB::HumanB(std::string name_input)
 {
     name = name_input;
+    weapon.setType("bare hands");
 }
 
 HumanB::~HumanB(void){}
