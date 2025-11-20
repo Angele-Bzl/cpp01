@@ -2,20 +2,26 @@
 #include <fstream>
 #include <string>
 
-void ftSed(std::string output, std::string old, std::string nw)
+void sed(std::string *output, std::string old, std::string nw)
 {
-    int i = 0;
-    while (output[i])
-    {
+    size_t i;
+    size_t start = 0;
 
+    while ((i = output->find(old, start)) != std::string::npos)
+    {
+        output->erase(i, old.size());
+        output->insert(i, nw);
+        start = i + nw.size();
     }
 }
 
 int main(int ac, char **av)
 {
+    
     if (ac != 4)
     {
         std::cout << "Error: wrong number of parameters." << std::endl;
+        std::cout << "Expected: ./sed <filname> <to_replace> <replacement>" << std::endl;
         return (-1);
     }
 
@@ -26,7 +32,7 @@ int main(int ac, char **av)
         std::cout << "Error: open failed." << std::endl;
         return (-1);
     }
-
+    
     std::string line;
     std::string output;
     while (std::getline(input_file, line))
@@ -35,10 +41,12 @@ int main(int ac, char **av)
         output += "\n";
     }
     input_file.close();
-
+    
     std::string old = av[2];
     std::string nw = av[3];
-    ftSed(output, old, nw);
+    sed(&output, old, nw);
+    
+    std::cout << output << std::endl;
 
     return (0);
 }
