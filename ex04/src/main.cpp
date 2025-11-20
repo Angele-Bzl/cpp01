@@ -4,7 +4,7 @@
 
 void sed(std::string *output, std::string old, std::string nw)
 {
-    size_t i;
+    size_t i = 0;
     size_t start = 0;
 
     while ((i = output->find(old, start)) != std::string::npos)
