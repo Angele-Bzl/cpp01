@@ -3,15 +3,12 @@
 /*private*/
 void Harl::debug(void)
 {
-    std::cout << "DEBUG: my cat likes to be pat on the head, with a lot of pressure.\
-    You can hold his paws gently, but mostly he likes big hugs." << std::endl;
+    std::cout << "DEBUG: my cat likes to be pat on the head, and mostly he likes big hugs." << std::endl;
 }
 
 void Harl::info(void)
 {
-    std::cout << "INFO: make sure to be between the ears on the head.\
-    don't hold his paws too long, his patience is limited.\
-    and don't let go a big hug as long as he needs it." << std::endl;
+    std::cout << "INFO: make sure to be between the ears on the head, and don't let go a big hug as long as he needs it." << std::endl;
 }
 
 void Harl::warning(void)
@@ -25,13 +22,7 @@ void Harl::error(void)
 }
 
 /*constructors and destructors*/
-Harl::Harl()
-{
-    dispatch["DEBUG"] = &Harl::debug;
-    dispatch["INFO"] = &Harl::info;
-    dispatch["WARNING"] = &Harl::warning;
-    dispatch["ERROR"] = &Harl::error;
-}
+Harl::Harl(){}
 
 Harl::~Harl(void){}
 
@@ -40,16 +31,59 @@ Harl::~Harl(void){}
 /*getters*/
 
 /*other*/
+enum level_num
+{
+    INFO,
+    WARNING,
+    DEBUG,
+    ERROR,
+
+    EXEC_ERR = -1
+};
+
+static level_num what_to_complain(std::string level)
+{
+    if (!level.compare("INFO"))
+        return (INFO);
+    if (!level.compare("WARNING"))
+        return (WARNING);
+    if (!level.compare("DEBUG"))
+        return (DEBUG);
+    if (!level.compare("ERROR"))
+        return (ERROR);
+    return (EXEC_ERR);
+}
+
+typedef void (Harl::*pointer_member_complain)();
+
 void Harl::complain(std::string level)
 {
-    std::map<std::string, void (Harl::*)()>::iterator it = dispatch.find(level);
-    if (it != dispatch.end())
+    level_num to_do = what_to_complain(level);
+    pointer_member_complain complains[] = {&Harl::info, &Harl::warning, &Harl::debug, &Harl::error};
+
+    switch (to_do)
     {
-        void (Harl::*f)()= it->second;    // get the member function pointer which is the second infomation in the map
-        (this->*f)();             // call it on *this*
-    }
-    else
-    {
-        std::cout << "unknown command\n";
-    }
+        case INFO:
+        {
+            (this->*complains[INFO])();
+            break ;
+        }
+        case WARNING:
+        {
+            (this->*complains[WARNING])();
+            break ;
+        }
+        case DEBUG:
+        {
+            (this->*complains[DEBUG])();
+            break ;
+        }
+        case ERROR:
+        {
+            (this->*complains[ERROR])();
+            break ;
+        }
+        default:
+            std::cout << "unknown command" << std::endl;
+    } 
 }
