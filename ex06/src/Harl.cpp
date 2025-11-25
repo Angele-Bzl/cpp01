@@ -66,17 +66,14 @@ void Harl::complain(std::string level)
         case DEBUG:
         {
             (this->*complains[DEBUG])();
-            break ;
         }
         case INFO:
         {
             (this->*complains[INFO])();
-            break ;
         }
         case WARNING:
         {
             (this->*complains[WARNING])();
-            break ;
         }
         case ERROR:
         {
