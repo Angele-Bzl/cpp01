@@ -12,8 +12,6 @@ class Harl
     void warning(void);
     void error(void);
 
-    std::map<std::string, void (Harl::*)()> dispatch;
-
     public:
     /*constructors and destructors*/
     Harl(void);
