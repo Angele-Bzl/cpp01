@@ -58,32 +58,37 @@ typedef void (Harl::*pointer_member_complain)();
 
 void Harl::complain(std::string level)
 {
-    level_num to_do = what_to_complain(level);
     pointer_member_complain complains[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    level_num to_do = what_to_complain(level);
 
-    switch (to_do)
-    {
-        case DEBUG:
-        {
-            (this->*complains[DEBUG])();
-            break ;
-        }
-        case INFO:
-        {
-            (this->*complains[INFO])();
-            break ;
-        }
-        case WARNING:
-        {
-            (this->*complains[WARNING])();
-            break ;
-        }
-        case ERROR:
-        {
-            (this->*complains[ERROR])();
-            break ;
-        }
-        default:
-            std::cout << "[I love my cat and you should too.]" << std::endl;
-    } 
+    if (to_do <= 0 && to_do >= 3)
+        (this->*complains[to_do])();
+    else
+        std::cout << "[I love my cat and you should too.]" << std::endl;
+    
+    // switch (to_do)
+    // {
+    //     case DEBUG:
+    //     {
+    //         (this->*complains[DEBUG])();
+    //         break ;
+    //     }
+    //     case INFO:
+    //     {
+    //         (this->*complains[INFO])();
+    //         break ;
+    //     }
+    //     case WARNING:
+    //     {
+    //         (this->*complains[WARNING])();
+    //         break ;
+    //     }
+    //     case ERROR:
+    //     {
+    //         (this->*complains[ERROR])();
+    //         break ;
+    //     }
+    //     default:
+    //         std::cout << "[I love my cat and you should too.]" << std::endl;
+    // } 
 }
