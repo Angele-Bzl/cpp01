@@ -1,11 +1,11 @@
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 # include <iostream>
 
 class Zombie
 {
     private:
-    std::string name;
+    std::string _name;
 
     public:
     /*constructors and destructors*/
@@ -13,13 +13,13 @@ class Zombie
     ~Zombie(void);
 
     /*setters*/
-    void set_name(std::string setting);
+    void setName(std::string setting);
     
     /*getters*/
-    std::string get_name(void);
+    std::string getName(void);
     
     /*other*/
-    void annouce(void);
+    void announce(void);
 };
 
 

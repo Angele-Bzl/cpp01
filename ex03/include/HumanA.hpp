@@ -1,13 +1,13 @@
-#ifndef HUMANA_H
-# define HUMANA_H
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
 #include "Weapon.hpp"
 
 class HumanA
 {
     private:
-    std::string name;
-    Weapon weapon;
+    std::string _name;
+    Weapon _weapon;
 
     public:
     /*constructors and destructors*/

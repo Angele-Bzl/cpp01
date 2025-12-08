@@ -2,22 +2,22 @@
 
 Weapon::Weapon(std::string type_input)
 {
-    type = type_input;
+    _type = type_input;
 }
 
 Weapon::Weapon(void)
 {
-    type = "a small stick";
+    _type = "a small stick";
 }
 
 Weapon::~Weapon(void){}
 
 std::string Weapon::getType(void)
 {
-    return (type);
+    return (_type);
 }
 
 void Weapon::setType(std::string type_input)
 {
-    type = type_input;
+    _type = type_input;
 }

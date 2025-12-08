@@ -9,10 +9,11 @@ int main(void)
 
     for (int i = 0 ; i < n ; i++)
     {
-        cranberries[i].annouce();
+        cranberries[i].announce();
     }
 
-    delete[] cranberries;
+    if (cranberries)
+        delete[] cranberries;
 
     return (0);
 }

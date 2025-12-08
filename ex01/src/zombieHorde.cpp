@@ -2,13 +2,21 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
-    Zombie *zombieHorde;
+    Zombie *zombieHorde = NULL;
 
-    zombieHorde = new Zombie[N];
+    try
+    {
+        zombieHorde = new Zombie[N];
+    }
+    catch(std::bad_alloc & ba)
+    {
+        std::cerr << "Error: new allocation failed " << ba.what() << std::endl;
+        return (NULL);
+    }
     
     for (int i = 0 ; i < N ; i++)
     {
-        zombieHorde[i].set_name(name);
+        zombieHorde[i].setName(name);
     }
 
     return (zombieHorde);

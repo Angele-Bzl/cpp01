@@ -1,12 +1,12 @@
-#ifndef WEAPON_H
-# define WEAPON_H
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 # include <iostream>
 
 class Weapon
 {
     private:
-    std::string type;
+    std::string _type;
 
     public:
     /*constructors and destructors*/

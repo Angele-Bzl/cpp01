@@ -2,8 +2,17 @@
 
 Zombie *newZombie(std::string name)
 {
-    Zombie *newZombiePointer = new Zombie();
-
-    newZombiePointer->set_name(name);
-    return (newZombiePointer);
+    Zombie* newZombie = NULL;
+    try
+    {
+        newZombie = new Zombie();
+    }
+    catch(std::bad_alloc & ba)
+    {
+        std::cerr << "Error: new allocation failed " << ba.what() << std::endl;
+        return (NULL);
+    }
+    newZombie->setName(name);
+    // newZombie->announce();
+    return (newZombie);
 }

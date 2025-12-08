@@ -4,20 +4,20 @@ Zombie::Zombie(void){}
 
 Zombie::~Zombie(void)
 {
-    std::cout << name << " has been destroyed." << std::endl;
+    std::cout << _name << " has been destroyed." << std::endl;
 }
 
-void Zombie::set_name(std::string setting)
+void Zombie::setName(std::string setting)
 {
-    name = setting;
+    _name = setting;
 }
 
-std::string Zombie::get_name(void)
+std::string Zombie::getName(void)
 {
-    return (name);
+    return (_name);
 }
 
-void Zombie::annouce(void)
+void Zombie::announce(void)
 {
-    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

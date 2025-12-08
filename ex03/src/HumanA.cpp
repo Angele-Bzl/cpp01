@@ -2,13 +2,13 @@
 
 HumanA::HumanA(std::string name_input, Weapon weapon_input)
 {
-    name = name_input;
-    weapon = weapon_input;
+    _name = name_input;
+    _weapon = weapon_input;
 }
 
 HumanA::~HumanA(void){}
 
 void HumanA::attack(void)
 {
-    std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+    std::cout << _name << " attacks using " << _weapon.getType() << std::endl;
 }

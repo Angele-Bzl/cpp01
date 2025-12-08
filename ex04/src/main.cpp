@@ -20,8 +20,8 @@ int main(int ac, char **av)
     
     if (ac != 4)
     {
-        std::cout << "Error: wrong number of parameters." << std::endl;
-        std::cout << "Expected: ./sed <filname> <to_replace> <replacement>" << std::endl;
+        std::cerr << "Error: wrong number of parameters." << std::endl;
+        std::cerr << "Expected: ./sed <filname> <to_replace> <replacement>" << std::endl;
         return (-1);
     }
 
@@ -29,7 +29,7 @@ int main(int ac, char **av)
     input_file.open(av[1]);
     if (input_file.fail())
     {
-        std::cout << "Error: open failed." << std::endl;
+        std::cerr << "Error: open failed." << std::endl;
         return (-1);
     }
     

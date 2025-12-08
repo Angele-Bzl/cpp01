@@ -3,21 +3,24 @@
 int main(void)
 {
     /*the variable Dolores will be stocked in the heap, independently of the function newZombie()*/
-    Zombie *dolores_o_riordan;
-    dolores_o_riordan = newZombie("Dolores O'Riordan");
+    Zombie *doloresORiordan;
+    doloresORiordan = newZombie("Dolores O'Riordan");
+    if (!doloresORiordan)
+        return (-1);
     /*since Dolores is on the heap, I can use it in main(), even tho it was set in newZombie*/
-    dolores_o_riordan->annouce();
+    doloresORiordan->announce();
 
     /*the variable Mike will be stocked in the stack of the function randomChump() so it also gets deleted in it*/
     randomChump("Mike Hogan");
 
     /*the variable Fergal will be stocked in the stack*/
-    Zombie fergal_lawler;
-    fergal_lawler.set_name("Fergal Lawler");
-    fergal_lawler.annouce();
+    Zombie fergalLawler;
+    fergalLawler.setName("Fergal Lawler");
+    fergalLawler.announce();
 
     /*since Dolores is in the heap, it needs to be manually deleted*/
-    delete dolores_o_riordan;
+    if (doloresORiordan)
+        delete doloresORiordan;
 
     /*the variable Fergal will be deleted at the end of the stack of the function main()*/
     return (0);
