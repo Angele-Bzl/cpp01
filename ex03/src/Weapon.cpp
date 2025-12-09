@@ -12,12 +12,12 @@ Weapon::Weapon(void)
 
 Weapon::~Weapon(void){}
 
-std::string Weapon::getType(void)
+std::string Weapon::getType(void) const
 {
     return (_type);
 }
 
-void Weapon::setType(std::string type_input)
+void Weapon::setType(const std::string value)
 {
-    _type = type_input;
+    _type = value;
 }

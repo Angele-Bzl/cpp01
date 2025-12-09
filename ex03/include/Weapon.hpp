@@ -15,10 +15,10 @@ class Weapon
     ~Weapon(void);
 
     /*setters*/
-    std::string getType(void);
+    std::string getType(void) const;
     
     /*getters*/
-    void setType(std::string type_input);
+    void setType(const std::string value);
 
     /*other*/
 };

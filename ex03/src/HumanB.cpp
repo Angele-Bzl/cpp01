@@ -1,14 +1,20 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name_input)
-{
-    _name = name_input;
-    _weapon.setType("bare hands");
-}
+HumanB::HumanB(std::string name)
+    : _name(name), _weapon(NULL)
+{}
 
 HumanB::~HumanB(void){}
 
 void HumanB::attack(void)
 {
-    std::cout << _name << " attacks using " << _weapon.getType() << std::endl;
+    if(_weapon)
+        std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
+    else
+        std::cout << _name << " has no weapon." << std::endl;
+}
+
+void HumanB::setWeapon(Weapon &weapon)
+{
+    _weapon = &weapon;
 }

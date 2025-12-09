@@ -7,14 +7,15 @@ class HumanB
 {
     private:
     std::string _name;
-    Weapon _weapon;
+    Weapon *_weapon;
 
     public:
     /*constructors and destructors*/
-    HumanB(std::string name_input);
+    HumanB(std::string name);
     ~HumanB(void);
 
     /*setters*/
+    void setWeapon(Weapon &weapon);
     
     /*getters*/
 
