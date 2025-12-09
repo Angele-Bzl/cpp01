@@ -43,13 +43,13 @@ enum level_num
 
 static level_num what_to_complain(std::string level)
 {
-    if (!level.compare("INFO"))
+    if (level == "INFO")
         return (INFO);
-    if (!level.compare("WARNING"))
+    if (level == "WARNING")
         return (WARNING);
-    if (!level.compare("DEBUG"))
+    if (level == "DEBUG")
         return (DEBUG);
-    if (!level.compare("ERROR"))
+    if (level == "ERROR")
         return (ERROR);
     return (EXEC_ERR);
 }
@@ -61,34 +61,8 @@ void Harl::complain(std::string level)
     pointer_member_complain complains[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     level_num to_do = what_to_complain(level);
 
-    if (to_do <= 0 && to_do >= 3)
+    if (to_do >= 0 && to_do <= 3)
         (this->*complains[to_do])();
     else
         std::cout << "[I love my cat and you should too.]" << std::endl;
-    
-    // switch (to_do)
-    // {
-    //     case DEBUG:
-    //     {
-    //         (this->*complains[DEBUG])();
-    //         break ;
-    //     }
-    //     case INFO:
-    //     {
-    //         (this->*complains[INFO])();
-    //         break ;
-    //     }
-    //     case WARNING:
-    //     {
-    //         (this->*complains[WARNING])();
-    //         break ;
-    //     }
-    //     case ERROR:
-    //     {
-    //         (this->*complains[ERROR])();
-    //         break ;
-    //     }
-    //     default:
-    //         std::cout << "[I love my cat and you should too.]" << std::endl;
-    // } 
 }
