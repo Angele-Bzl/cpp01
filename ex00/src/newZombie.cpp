@@ -9,7 +9,7 @@ Zombie *newZombie(std::string name)
     }
     catch(std::bad_alloc & ba)
     {
-        std::cerr << "Error: new allocation failed " << ba.what() << std::endl;
+        std::cout << "Error: new allocation failed " << ba.what() << std::endl;
         return (NULL);
     }
     newZombie->setName(name);
